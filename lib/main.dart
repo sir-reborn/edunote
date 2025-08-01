@@ -42,7 +42,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: const SplashScreen(),
           initialBinding: BindingsBuilder(() {
-            Get.lazyPut<ObTextController>(() => ObTextController());
+            Get.put<ObTextController>(
+              ObTextController(),
+              permanent: true,
+            ); // 👈 stays alive
           }),
         );
       },

@@ -22,10 +22,6 @@ class TextBox extends StatelessWidget {
   final TextEditingController? controllerr;
   @override
   Widget build(BuildContext context) {
-    if (obscureRequired && !Get.isRegistered<ObTextController>()) {
-      Get.put(ObTextController());
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

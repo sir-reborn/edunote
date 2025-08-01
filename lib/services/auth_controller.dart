@@ -48,7 +48,7 @@ class AuthController extends GetxController {
       Get.snackbar(
         'About User',
         'User message',
-        backgroundColor: Colour.blue,
+        backgroundColor: Colour.purple,
         snackPosition: SnackPosition.TOP,
         titleText: Text(
           'Account creation failed',
@@ -66,7 +66,7 @@ class AuthController extends GetxController {
       Get.snackbar(
         'About Login',
         'Login message',
-        backgroundColor: Colour.blue,
+        backgroundColor: Colour.purple,
         snackPosition: SnackPosition.TOP,
         titleText: Text('Login failed', style: TextStyle(color: Colors.white)),
         messageText: Text(e.toString(), style: TextStyle(color: Colors.white)),
