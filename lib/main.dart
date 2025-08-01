@@ -10,9 +10,8 @@ import 'package:get_storage/get_storage.dart';
 import 'services/auth_controller.dart';
 import 'package:edunote/widget/text_box.dart';
 
-void main() async {
-  final WidgetsBinding widgetsBinding =
-      WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: const SplashScreen(),
           initialBinding: BindingsBuilder(() {
             Get.lazyPut<ObTextController>(() => ObTextController());
           }),

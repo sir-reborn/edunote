@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ui_text.dart';
-import 'white_space.dart';
 import 'package:edunote/utils/colour.dart';
 
 class TextBox extends StatelessWidget {
@@ -37,7 +36,7 @@ class TextBox extends StatelessWidget {
           textAlign: TextAlign.left,
           // fontWeight: FontWeight.w500
         ),
-        WhiteSpace(height: 10),
+        SizedBox(height: 10),
         Container(
           width: double.infinity,
           decoration: BoxDecoration(

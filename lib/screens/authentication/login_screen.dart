@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:edunote/widget/round_button.dart';
 import 'package:edunote/widget/text_box.dart';
 import 'package:edunote/widget/ui_text.dart';
-import 'package:edunote/widget/white_space.dart';
 import 'package:edunote/screens/authentication/sign_up_screen.dart';
 import 'package:edunote/services/auth_controller.dart';
 
@@ -35,33 +34,31 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            //height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   alignment: AlignmentDirectional.center,
-                  //height: 285.h,
                   child: Column(
                     children: [
-                      WhiteSpace(height: 75),
+                      SizedBox(height: w.height * 1 / 12),
                       Image(
-                        width: 100.w,
+                        width: w.width * 1 / 4,
                         fit: BoxFit.fitWidth,
                         image: AssetImage('assets/logoo.png'),
                       ),
-                      WhiteSpace(height: 12),
+                      SizedBox(height: 8),
                       UiText(
                         'Welcome back',
                         fontSize: 30,
-                        color: Colors.black.withOpacity(0.7),
+                        color: Colors.black,
                         fontWeight: FontWeight.w500,
                       ),
                     ],
                   ),
                 ),
-                WhiteSpace(height: 30),
+                SizedBox(height: w.height * 1 / 20),
                 TextBox(
                   textBoxName: 'Email',
                   obscureRequired: false,
@@ -69,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixIcon: Icons.email,
                   controllerr: emailController,
                 ),
-                WhiteSpace(height: 25),
+                SizedBox(height: 25),
                 TextBox(
                   textBoxName: 'Password',
                   hintText: 'Enter Password',
@@ -77,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureRequired: true,
                   controllerr: passwordController,
                 ),
-                WhiteSpace(height: 9),
+                SizedBox(height: 11),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -90,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                WhiteSpace(height: 30),
+                SizedBox(height: w.height * 1 / 20),
                 RoundButton(
                   text: 'LOGIN',
                   bgColor: Colour.purple,
@@ -102,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                 ),
-                SizedBox(height: 85.h),
+                SizedBox(height: 11),
                 Center(
                   child: RichText(
                     text: TextSpan(

@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:edunote/widget/round_button.dart';
 import 'package:edunote/widget/text_box.dart';
 import 'package:edunote/widget/ui_text.dart';
-import 'package:edunote/widget/white_space.dart';
 import 'package:edunote/screens/authentication/login_screen.dart';
 import 'package:edunote/services/auth_controller.dart';
 
@@ -31,18 +30,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: w.height * 1 / 7),
+            SizedBox(height: w.height * 1 / 6),
             UiText(
               'Join EduNote Today',
               fontWeight: FontWeight.w500,
               fontSize: 30,
               color: Colors.black,
             ),
-            WhiteSpace(height: 8),
+            SizedBox(height: 8),
             Text(
               'Sign up to unlock intelligent note-taking, instant lecture transcripts and more.',
               textAlign: TextAlign.left,
@@ -52,14 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 color: Colors.black.withOpacity(0.7),
               ),
             ),
-            SizedBox(height: w.height * 1 / 25),
-            TextBox(
-              textBoxName: 'Full name',
-              hintText: 'Reborn Leo',
-              prefixIcon: Icons.person,
-              obscureRequired: false,
-            ),
-            WhiteSpace(height: 25),
+            SizedBox(height: w.height * 1 / 13),
             TextBox(
               controllerr: emailController,
               textBoxName: 'Email',
@@ -67,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               prefixIcon: Icons.email,
               obscureRequired: false,
             ),
-            WhiteSpace(height: 25),
+            SizedBox(height: 25),
             TextBox(
               controllerr: passwordController,
               textBoxName: 'Password',
@@ -75,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               prefixIcon: Icons.lock,
               obscureRequired: true,
             ),
-            WhiteSpace(height: 30),
+            SizedBox(height: w.height * 1 / 10),
             RoundButton(
               text: 'SIGN UP',
               bgColor: Colour.purple,
@@ -87,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 );
               },
             ),
-            WhiteSpace(height: 30),
+            SizedBox(height: 11),
             Center(
               child: RichText(
                 text: TextSpan(

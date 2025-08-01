@@ -28,6 +28,7 @@ class AuthController extends GetxController {
 
   // initial settings if a user is logged in or not, it will be accessible everywhere in the app
   _initiaScreen(User? user) async {
+    await Future.delayed(const Duration(seconds: 3));
     if (user == null) {
       print('login page');
       Get.offAll(() => LoginScreen());
