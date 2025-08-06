@@ -74,7 +74,11 @@ class _RecordingScreenState extends State<RecordingScreen> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colour.purple1, Colour.purple2, Colour.purple3],
+                colors: [
+                  Colour.purpleLight1,
+                  Colour.purpleLight1,
+                  Colour.purpleDark1,
+                ],
                 begin: const FractionalOffset(0.0, 0.4),
                 end: Alignment.topRight,
               ),
