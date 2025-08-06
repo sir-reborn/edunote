@@ -65,7 +65,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colour.purple3,
+        backgroundColor: Colour.purple,
       ),
       body: SingleChildScrollView(
         child: SizedBox(
