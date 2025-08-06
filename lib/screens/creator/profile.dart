@@ -7,7 +7,16 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Profile')),
-      body: const Center(child: Text('Profile Screen Content')),
+      body: Center(
+        child: RoundButton(
+          text: 'LOGOUT',
+          bgColor: Colour.purple,
+          textColor: Colors.white,
+          onPressed: () {
+            AuthController.instance.logOut();
+          },
+        ),
+      ),
     );
   }
 }
