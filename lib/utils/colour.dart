@@ -6,6 +6,8 @@ class Colour {
   //used to prevent the class from being instantiated.
   static const Color blue = Color(0xFF4774E6);
   static const Color purple = Color(0xFF4B0082);
+  static const Color purpleDark1 = Color(0xFF3A006B); //// Deep indigo
+  static const Color purpleLight1 = Color(0xFF6A0DAD); // Amethyst
   static const Color kBgColor = Color(0xFFecf5fb);
   static const Color kDarkGreyColor = Color(0xFF727C9B);
   static const Color kwhite = Color(0xFFEEEFFC);
