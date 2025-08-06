@@ -1,3 +1,6 @@
+import 'package:edunote/services/auth_controller.dart';
+import 'package:edunote/utils/colour.dart';
+import 'package:edunote/widget/round_button.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
