@@ -3,6 +3,7 @@ import 'dart:async'; // For Timer
 import 'dart:convert'; // For JSON encoding/decoding
 import 'dart:io'; // For file I/O
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:edunote/class_model.dart';
 import 'package:edunote/utils/colour.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -264,6 +265,17 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       // Start transcription
       _transcribeAudio(newPath);
+      final newClass = Class(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        subject: fileName, // Use the user-provided name
+        teacher: 'Prof. Smith', // You could make this editable too
+        date: DateTime.now(),
+        recordingPath: _recordingPath,
+        transcript: _structuredNotes, // Use the generated notes
+        summary: _summary ?? 'No summary available',
+      );
+
+      Navigator.pop(context, newClass);
     }
 
     setState(() {
@@ -359,7 +371,15 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       // Save as PDF with structured notes
       await _createStructuredPdf();
-
+      // final newClass = Class(
+      //   id: DateTime.now().millisecondsSinceEpoch.toString(),
+      //   subject: 'New Lecture ${DateTime.now().day}',
+      //   teacher: 'Prof. Smith',
+      //   date: DateTime.now(),
+      //   recordingPath: '/path/to/recording',
+      //   transcript: 'This is a sample transcript of the recorded lecture...',
+      //   summary: 'This lecture covered the main concepts of...',
+      // );
       Navigator.pop(context); // Close loading dialog
 
       // Show results screen
