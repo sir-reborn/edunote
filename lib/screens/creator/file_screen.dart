@@ -168,7 +168,7 @@ class _FilesScreenState extends State<FilesScreen> {
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: ListTile(
-            leading: const Icon(Icons.picture_as_pdf, color: Colour.purple1),
+            leading: const Icon(Icons.picture_as_pdf, color: Colour.purple),
             title: Text(
               fileName,
               style: GoogleFonts.poppins(
