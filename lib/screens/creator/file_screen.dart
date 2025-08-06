@@ -130,7 +130,7 @@ class _FilesScreenState extends State<FilesScreen> {
                     _currentlyPlayingIndex == index
                         ? Icons.pause
                         : Icons.play_arrow,
-                    color: Colour.purple1,
+                    color: Colour.purple,
                   ),
                   onPressed: () => _playAudio(file.path, index),
                 ),
