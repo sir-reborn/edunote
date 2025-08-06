@@ -1,5 +1,4 @@
-import 'package:edunote/screens/creator/home_page.dart';
-import 'package:edunote/screens/creator/tab_view_control.dart';
+import 'package:edunote/screens/creator/dashboard/home.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class AuthController extends GetxController {
       print('login page');
       Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(() => TabViewControl());
+      Get.offAll(() => HomeScreen());
     }
     print(user?.uid);
   }
