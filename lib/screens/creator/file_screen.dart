@@ -87,8 +87,14 @@ class _FilesScreenState extends State<FilesScreen> {
           title: const Text('My Files'),
           bottom: const TabBar(
             tabs: [
-              Tab(text: 'Recordings', icon: Icon(Icons.audiotrack)),
-              Tab(text: 'Transcripts', icon: Icon(Icons.text_snippet)),
+              Tab(
+                text: 'Recordings',
+                icon: Icon(Icons.audiotrack, color: Colors.white),
+              ),
+              Tab(
+                text: 'Transcripts',
+                icon: Icon(Icons.text_snippet, color: Colors.white),
+              ),
             ],
           ),
         ),
