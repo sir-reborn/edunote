@@ -1,3 +1,7 @@
+import 'package:edunote/screens/creator/class_details.dart';
+import 'package:edunote/screens/creator/file_screen.dart';
+import 'package:edunote/screens/creator/profile.dart';
+import 'package:edunote/screens/creator/recording_screen.dart';
 import 'package:edunote/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
@@ -36,6 +40,27 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.deepPurple,
+            primaryColor: const Color(0xFF4B0082), // Your purple color
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xFF4B0082),
+            ),
+            appBarTheme: const AppBarTheme(
+              color: Color(0xFF4B0082),
+              iconTheme: IconThemeData(color: Colors.white),
+            ),
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: Color(0xFF4B0082),
+            ),
+            useMaterial3: true,
+          ),
+          routes: {
+            '/record': (context) => const RecordingScreen(),
+            '/class-details': (context) => const ClassDetailsScreen(),
+            '/profile': (context) => const ProfileScreen(),
+            '/downloads': (context) => const FilesScreen(),
+          },
           useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
