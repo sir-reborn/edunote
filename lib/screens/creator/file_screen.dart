@@ -96,6 +96,8 @@ class _FilesScreenState extends State<FilesScreen> {
                 icon: Icon(Icons.text_snippet, color: Colors.white),
               ),
             ],
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
           ),
         ),
         body: TabBarView(
