@@ -84,7 +84,7 @@ class _FilesScreenState extends State<FilesScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('My Files'),
+          title: const Text('My Files', style: TextStyle(color: Colors.white)),
           bottom: const TabBar(
             tabs: [
               Tab(
