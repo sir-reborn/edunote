@@ -9,7 +9,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
+      appBar: AppBar(
+        title: Text('Profile', style: TextStyle(color: Colors.white)),
+      ),
       body: Center(
         child: RoundButton(
           text: 'LOGOUT',
