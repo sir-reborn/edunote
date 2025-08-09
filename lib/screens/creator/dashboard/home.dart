@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (result != null && result is Class) {
       setState(() {
         classes.add(result);
+        _saveClasses(); // Save after adding
       });
 
       // Show success message
