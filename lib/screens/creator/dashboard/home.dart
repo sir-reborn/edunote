@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final storage = GetStorage();
   List<Class> classes = [];
   bool isLoading = false;
 
