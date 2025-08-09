@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadClasses();
   }
 
-  Future<void> _loadClasses() async {
+  void _loadClasses() {
     setState(() => isLoading = true);
 
     final storedData = storage.read<List>('classes') ?? [];
