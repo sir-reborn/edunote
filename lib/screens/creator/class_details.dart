@@ -13,7 +13,7 @@ class ClassDetailsScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(classItem.subject),
+          title: Text(classItem.subject, style: TextStyle(color: Colors.white)),
           bottom: const TabBar(
             tabs: [
               Tab(text: 'Transcript'),
