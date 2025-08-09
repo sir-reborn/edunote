@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ui_text.dart';
 import 'package:edunote/utils/colour.dart';
+import 'package:edunote/models/obscure_text_controller.dart';
 
 class TextBox extends StatelessWidget {
   const TextBox({
@@ -104,9 +105,4 @@ class TextBox extends StatelessWidget {
       ),
     );
   }
-}
-
-class ObTextController extends GetxController {
-  var obscureText = true.obs;
-  toggle() => obscureText.value = !obscureText.value;
 }

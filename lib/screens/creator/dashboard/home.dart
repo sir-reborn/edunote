@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:edunote/class_model.dart';
+import 'package:edunote/models/class_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           : _buildClassList(),
       floatingActionButton: FloatingActionButton(
         onPressed: _addNewClass,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white),
       ),
     );
   }
@@ -70,11 +71,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xFF4B0082)),
-            child: Text(
-              'EduNote',
-              style: TextStyle(color: Colors.white, fontSize: 24),
+          Container(
+            height: 120.h,
+            child: DrawerHeader(
+              decoration: BoxDecoration(color: Color(0xFF4B0082)),
+              child: Text(
+                'EduNote',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
           ),
           ListTile(

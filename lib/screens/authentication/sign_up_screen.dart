@@ -9,7 +9,7 @@ import 'package:edunote/widget/round_button.dart';
 import 'package:edunote/widget/text_box.dart';
 import 'package:edunote/widget/ui_text.dart';
 import 'package:edunote/screens/authentication/login_screen.dart';
-import 'package:edunote/services/auth_controller.dart';
+import 'package:edunote/models/auth_controller.dart';
 
 import 'package:edunote/utils/colour.dart';
 

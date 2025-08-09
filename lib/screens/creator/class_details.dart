@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:edunote/class_model.dart';
+import 'package:edunote/models/class_model.dart';
 import 'package:path/path.dart';
 
 class ClassDetailsScreen extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:edunote/screens/creator/class_details.dart';
 import 'package:edunote/screens/creator/file_screen.dart';
 import 'package:edunote/screens/creator/profile.dart';
 import 'package:edunote/screens/creator/recording_screen.dart';
-import 'package:edunote/splash_screen.dart';
+import 'package:edunote/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:edunote/services/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_storage/get_storage.dart';
-import 'services/auth_controller.dart';
-import 'package:edunote/widget/text_box.dart';
+import 'models/auth_controller.dart';
+import 'package:edunote/models/obscure_text_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
