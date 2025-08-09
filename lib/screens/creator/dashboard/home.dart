@@ -24,14 +24,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadClasses() async {
     setState(() => isLoading = true);
-    // In a real app, you would load this from a database
-    await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      classes = classes.isNotEmpty
-          ? classes
-          : []; // Start with empty list to show illustration
-      isLoading = false;
-    });
+
+    final storedData = storage.read<List>('classes') ?? [];
+    classes = storedData
+        .map((e) => Class.fromMap(Map<String, dynamic>.from(e)))
+        .toList();
+
+    setState(() => isLoading = false);
+  }
+
+  void _saveClasses() {
+    storage.write('classes', classes.map((c) => c.toMap()).toList());
   }
 
   void _addNewClass() async {
