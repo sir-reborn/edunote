@@ -236,7 +236,6 @@ class _RecordingScreenState extends State<RecordingScreen> {
     _timer?.cancel();
     await _audioRecorder.stop();
 
-    // Show dialog to name the file
     final fileName = await showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
@@ -262,28 +261,27 @@ class _RecordingScreenState extends State<RecordingScreen> {
     );
 
     if (fileName != null && fileName.isNotEmpty) {
-      // Rename the file
       final directory = await getApplicationDocumentsDirectory();
       final newPath = p.join(directory.path, '$fileName.wav');
       await File(_recordingPath!).rename(newPath);
 
-      // Start transcription
-      _transcribeAudio(newPath);
+      // Wait for transcription
+      final processedData = await _transcribeAudio(newPath);
+
       final newClass = Class(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
-        subject: fileName, // Use the user-provided name
-        teacher: 'Prof. Smith', // You could make this editable too
+        subject: fileName,
+        teacher: 'Prof. Smith',
         date: DateTime.now(),
-        recordingPath: _recordingPath,
-        transcript: _structuredNotes, // Use the generated notes
-        summary: _summary ?? 'No summary available',
+        recordingPath: newPath,
+        transcript: processedData['notes'] ?? 'No transcript',
+        summary: processedData['summary'] ?? 'No summary available',
       );
 
-      Navigator.pop(context, newClass);
+      Navigator.pop(context, newClass); // Send completed class to home
     }
 
     setState(() {
-      //called at the end og the function after the dialog box
       _isRecording = false;
       _isPaused = false;
     });
@@ -318,7 +316,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     });
   }
 
-  Future<void> _transcribeAudio(String filePath) async {
+  Future<Map<String, String>> _transcribeAudio(String filePath) async {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -335,18 +333,16 @@ class _RecordingScreenState extends State<RecordingScreen> {
     );
 
     try {
-      // Upload to AssemblyAI
+      // Upload
       final uploadResponse = await http.post(
         Uri.parse('https://api.assemblyai.com/v2/upload'),
         headers: {'authorization': 'e0002e9595d94613b8fb70857b1c0738'},
         body: await File(filePath).readAsBytes(),
       );
 
-      final uploadData =
-          json.decode(uploadResponse.body) as Map<String, dynamic>;
-      final audioUrl = uploadData['upload_url'];
+      final audioUrl = json.decode(uploadResponse.body)['upload_url'];
 
-      // Enhanced transcription request with summarization and diarization
+      // Request transcription
       final transcriptResponse = await http.post(
         Uri.parse('https://api.assemblyai.com/v2/transcript'),
         headers: {
@@ -355,44 +351,27 @@ class _RecordingScreenState extends State<RecordingScreen> {
         },
         body: json.encode({
           'audio_url': audioUrl,
-          'speaker_labels': true, // Enable speaker diarization
-          'auto_chapters': true, // Enable automatic summarization
-          'entity_detection': true, // Detect important entities
+          'speaker_labels': true,
+          'auto_chapters': true,
+          'entity_detection': true,
         }),
       );
 
-      final transcriptData =
-          json.decode(transcriptResponse.body) as Map<String, dynamic>;
-      final transcriptId = transcriptData['id'];
+      final transcriptId = json.decode(transcriptResponse.body)['id'];
 
-      // Poll for results
-      Map<String, dynamic> transcriptResult = await _pollForTranscriptionResult(
-        transcriptId,
-      );
+      final transcriptResult = await _pollForTranscriptionResult(transcriptId);
 
-      // Process the enhanced results
       _processEnhancedTranscript(transcriptResult);
 
-      // Save as PDF with structured notes
-      await _createStructuredPdf();
-      // final newClass = Class(
-      //   id: DateTime.now().millisecondsSinceEpoch.toString(),
-      //   subject: 'New Lecture ${DateTime.now().day}',
-      //   teacher: 'Prof. Smith',
-      //   date: DateTime.now(),
-      //   recordingPath: '/path/to/recording',
-      //   transcript: 'This is a sample transcript of the recorded lecture...',
-      //   summary: 'This lecture covered the main concepts of...',
-      // );
       Navigator.pop(context); // Close loading dialog
 
-      // Show results screen
-      _showResultsScreen();
+      return {'notes': _structuredNotes ?? '', 'summary': _summary ?? ''};
     } catch (e) {
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
       );
+      return {'notes': '', 'summary': ''};
     }
   }
 
