@@ -139,14 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildClassList() {
-    return GridView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(16),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 1.2,
-      ),
       itemCount: classes.length,
       itemBuilder: (context, index) {
         return _buildClassCard(classes[index]);
@@ -157,6 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildClassCard(Class classItem) {
     return Card(
       elevation: 4,
+      margin: EdgeInsetsGeometry.fromLTRB(0, 0, 0, 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -169,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 80,
+                //height: 80,
                 decoration: BoxDecoration(
                   color: Colors.purple.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
@@ -201,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              const Spacer(),
+              const SizedBox(height: 12),
               Text(
                 'Last updated: ${classItem.formattedDate}',
                 style: const TextStyle(fontSize: 12, color: Colors.grey),
