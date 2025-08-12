@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:edunote/models/class_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final storage = GetStorage();
   List<Class> classes = [];
   bool isLoading = false;
 
@@ -20,16 +22,19 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadClasses();
   }
 
-  Future<void> _loadClasses() async {
+  void _loadClasses() {
     setState(() => isLoading = true);
-    // In a real app, you would load this from a database
-    await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      classes = classes.isNotEmpty
-          ? classes
-          : []; // Start with empty list to show illustration
-      isLoading = false;
-    });
+
+    final storedData = storage.read<List>('classes') ?? [];
+    classes = storedData
+        .map((e) => Class.fromMap(Map<String, dynamic>.from(e)))
+        .toList();
+
+    setState(() => isLoading = false);
+  }
+
+  void _saveClasses() {
+    storage.write('classes', classes.map((c) => c.toMap()).toList());
   }
 
   void _addNewClass() async {
@@ -38,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (result != null && result is Class) {
       setState(() {
         classes.add(result);
+        _saveClasses(); // Save after adding
       });
 
       // Show success message
@@ -133,14 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildClassList() {
-    return GridView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(16),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 1.2,
-      ),
       itemCount: classes.length,
       itemBuilder: (context, index) {
         return _buildClassCard(classes[index]);
@@ -151,6 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildClassCard(Class classItem) {
     return Card(
       elevation: 4,
+      margin: EdgeInsetsGeometry.fromLTRB(0, 0, 0, 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -163,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 80,
+                //height: 80,
                 decoration: BoxDecoration(
                   color: Colors.purple.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
@@ -195,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              const Spacer(),
+              const SizedBox(height: 12),
               Text(
                 'Last updated: ${classItem.formattedDate}',
                 style: const TextStyle(fontSize: 12, color: Colors.grey),

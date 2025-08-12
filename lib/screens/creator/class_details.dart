@@ -13,12 +13,15 @@ class ClassDetailsScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(classItem.subject),
+          title: Text(classItem.subject, style: TextStyle(color: Colors.white)),
           bottom: const TabBar(
             tabs: [
               Tab(text: 'Transcript'),
               Tab(text: 'Summary'),
             ],
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
+            indicatorColor: Colors.white,
           ),
         ),
         body: TabBarView(
@@ -44,19 +47,6 @@ class ClassDetailsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (classItem.recordingPath != null)
-            const Text(
-              'Audio Recording:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          if (classItem.recordingPath != null)
-            ElevatedButton(
-              onPressed: () {
-                // Play recording
-              },
-              child: const Text('Play Recording'),
-            ),
-          const SizedBox(height: 20),
           const Text(
             'Transcript:',
             style: TextStyle(fontWeight: FontWeight.bold),
