@@ -9,22 +9,12 @@ class ClassDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final classItem = ModalRoute.of(context)!.settings.arguments as Class;
 
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(classItem.subject, style: TextStyle(color: Colors.white)),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: 'Transcript'),
-              Tab(text: 'Summary'),
-            ],
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.white70,
-            indicatorColor: Colors.white,
-          ),
-        ),
-        body: TabBarView(
+    return Scaffold(
+      appBar: AppBar(title: Text(classItem.subject)),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTranscriptTab(classItem),
             _buildSummaryTab(classItem),
