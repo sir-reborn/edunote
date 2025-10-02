@@ -88,9 +88,48 @@ class _HomeScreenState extends State<HomeScreen> {
           : classes.isEmpty
           ? _buildEmptyState()
           : _buildClassList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _addNewClass,
-        child: Icon(Icons.add, color: Colors.white),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          if (_isFabOpen) ...[
+            FloatingActionButton.extended(
+              heroTag: 'join-class',
+              onPressed: () {
+                _joinClass();
+                setState(() => _isFabOpen = false);
+              },
+              label: const Text(
+                'Join Class',
+                style: TextStyle(color: Colors.white),
+              ),
+              icon: const Icon(Icons.group_add, color: Colors.white),
+            ),
+            const SizedBox(height: 16),
+            FloatingActionButton.extended(
+              heroTag: 'create-class',
+              onPressed: () {
+                _createClass();
+                setState(() => _isFabOpen = false);
+              },
+              label: const Text(
+                'Create Class',
+                style: TextStyle(color: Colors.white),
+              ),
+              icon: const Icon(Icons.add, color: Colors.white),
+            ),
+            const SizedBox(height: 16),
+          ],
+          FloatingActionButton(
+            onPressed: () {
+              setState(() => _isFabOpen = !_isFabOpen);
+            },
+            child: Icon(
+              _isFabOpen ? Icons.close : Icons.add,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
