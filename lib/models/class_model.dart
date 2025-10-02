@@ -19,6 +19,14 @@ class Class {
     required this.summary,
   });
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Class && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
+
   String get formattedDate => "${date.year}-${date.month}-${date.day}";
 
   // Convert Class → Map
