@@ -50,13 +50,15 @@ class Class {
   // Convert Map → Class
   factory Class.fromMap(Map<String, dynamic> map) {
     return Class(
-      id: map['id'],
-      subject: map['subject'],
-      teacher: map['teacher'],
-      date: DateTime.parse(map['date']),
-      recordingPath: map['recordingPath'],
-      transcript: map['transcript'],
-      summary: map['summary'],
+      id: map['id'] ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      subject: map['subject'] ?? 'Untitled Lecture',
+      teacher: map['teacher'] ?? 'Professor',
+      date: map['date'] != null ? DateTime.parse(map['date']) : DateTime.now(),
+      recordingPath: map['recordingPath'] ?? '',
+      transcript: map['transcript'] ?? 'No transcript available',
+      summary: map['summary'] ?? 'No summary available',
+      duration: map['duration'] ?? 0, // Default to 0 if null
+      language: map['language'] ?? 'English',
     );
   }
 }
