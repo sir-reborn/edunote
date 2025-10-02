@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: _addNewClass,
+                onPressed: _createClass,
                 child: const Text('Create class'),
               ),
               const SizedBox(width: 20),
