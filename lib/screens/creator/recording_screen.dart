@@ -320,7 +320,9 @@ class _RecordingScreenState extends State<RecordingScreen> {
   void _processEnhancedTranscript(Map<String, dynamic> transcriptResult) {
     // Extract summary from chapters
     final chapters = transcriptResult['chapters'] as List<dynamic>?;
-    _summary = chapters?.map((c) => c['summary'] as String).join('\n\n');
+    return chapters?.map((c) => c['summary'] as String).join('\n\n') ??
+        'No summary available';
+  }
 
     // Process speaker segments
     final utterances = transcriptResult['utterances'] as List<dynamic>?;
