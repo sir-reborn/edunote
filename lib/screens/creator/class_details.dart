@@ -21,13 +21,6 @@ class ClassDetailsScreen extends StatelessWidget {
             _buildTranscriptSection(classItem),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Generate PDF functionality
-            _generatePdf(classItem);
-          },
-          child: const Icon(Icons.picture_as_pdf),
-        ),
       ),
     );
   }
@@ -83,12 +76,5 @@ class ClassDetailsScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _generatePdf(Class classItem) {
-    // Implement PDF generation logic
-    ScaffoldMessenger.of(
-      context as BuildContext,
-    ).showSnackBar(const SnackBar(content: Text('Generating PDF...')));
   }
 }
