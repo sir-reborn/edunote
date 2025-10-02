@@ -14,7 +14,7 @@ class Class {
     required this.subject,
     required this.teacher,
     required this.date,
-    this.recordingPath,
+    required this.recordingPath,
     required this.transcript,
     required this.summary,
     required this.duration,
