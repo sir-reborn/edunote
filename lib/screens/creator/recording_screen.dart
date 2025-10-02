@@ -267,7 +267,17 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       _processEnhancedTranscript(transcriptResult);
 
-      Navigator.pop(context); // Close loading dialog
+      // 5. Create completed class
+      final completedClass = Class(
+        id: initialClass.id,
+        subject: initialClass.subject,
+        teacher: initialClass.teacher,
+        date: initialClass.date,
+        recordingPath: initialClass.recordingPath,
+        transcript: transcript,
+        summary: summary,
+        duration: initialClass.duration,
+      );
 
       return {'notes': _structuredNotes ?? '', 'summary': _summary ?? ''};
     } catch (e) {
