@@ -326,30 +326,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
     // Process speaker segments
     final utterances = transcriptResult['utterances'] as List<dynamic>?;
-    _speakerSegments =
-        utterances
-            ?.map(
-              (u) => SpeakerSegment(
-                speaker: u['speaker'] as String,
-                text: u['text'] as String,
-                start: (u['start'] as num).toInt(),
-                end: (u['end'] as num).toInt(),
-              ),
-            )
-            .toList() ??
-        [];
-
-    // Generate structured notes
-    _generateStructuredNotes();
-  }
-
-  void _generateStructuredNotes() {
-    final buffer = StringBuffer();
-    buffer.write('# Lecture Notes\n\n');
-
-    if (_summary != null) {
-      buffer.write('## Summary\n$_summary\n\n');
-    }
+    if (utterances == null)
+      return transcriptResult['text'] ?? 'No transcript available';
 
     if (_speakerSegments.isNotEmpty) {
       buffer.write('## Speaker Contributions\n');
