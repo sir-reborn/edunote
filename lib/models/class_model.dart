@@ -28,6 +28,11 @@ class Class {
   int get hashCode => id.hashCode;
 
   String get formattedDate => "${date.year}-${date.month}-${date.day}";
+  String get formattedDuration {
+    final minutes = (duration ~/ 60).toString().padLeft(2, '0');
+    final seconds = (duration % 60).toString().padLeft(2, '0');
+    return '$minutes:$seconds';
+  }
 
   // Convert Class → Map
   Map<String, dynamic> toMap() {
