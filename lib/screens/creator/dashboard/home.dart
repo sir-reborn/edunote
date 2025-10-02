@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Simulate loading data
     _loadClasses();
   }
 
@@ -54,7 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
         _saveClasses();
       });
 
-      // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Recording saved for ${initialClass.subject}')),
       );
@@ -229,7 +227,6 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                //height: 80,
                 decoration: BoxDecoration(
                   color: Colors.purple.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
