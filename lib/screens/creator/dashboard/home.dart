@@ -43,7 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
     final result = await Navigator.pushNamed(context, '/class-info');
   }
 
-    if (result != null && result is Class) {
+  // Handle the recording result when returning from recording screen
+  void _handleRecordingResult(dynamic result) {
+    if (result != null && result is Map<String, dynamic>) {
+      final initialClass = result['initialClass'] as Class;
+
+      // Add initial class immediately
       setState(() {
         classes.add(result);
         _saveClasses(); // Save after adding
