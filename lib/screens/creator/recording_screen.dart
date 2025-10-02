@@ -184,6 +184,12 @@ class _RecordingScreenState extends State<RecordingScreen> {
   }
 
   void _stopRecording() async {
+    setState(() {
+      _showStopConfirmation = false;
+      _isRecording = false;
+      _isProcessing = true;
+    });
+
     _timer?.cancel();
     await _audioRecorder.stop();
 
