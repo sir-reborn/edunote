@@ -1,11 +1,13 @@
 class Class {
-  String id;
-  String subject;
-  String teacher;
-  DateTime date;
-  String? recordingPath;
-  String transcript;
-  String summary;
+  final String id;
+  final String subject;
+  final String teacher;
+  final DateTime date;
+  final String recordingPath;
+  final String transcript;
+  final String summary;
+  final int duration; // in seconds
+  final String language;
 
   Class({
     required this.id,
