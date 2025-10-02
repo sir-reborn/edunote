@@ -50,8 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Add initial class immediately
       setState(() {
-        classes.add(result);
-        _saveClasses(); // Save after adding
+        classes.add(initialClass);
+        _saveClasses();
       });
 
       // Show success message
