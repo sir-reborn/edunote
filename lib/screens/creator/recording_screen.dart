@@ -212,12 +212,10 @@ class _RecordingScreenState extends State<RecordingScreen> {
       duration: _recordDuration,
     );
 
-      Navigator.pop(context, newClass); // Send completed class to home
-    }
-
-    setState(() {
-      _isRecording = false;
-      _isPaused = false;
+    // Return immediately to home screen
+    Navigator.pop(context, {
+      'initialClass': newClass,
+      'filePath': _recordingPath!,
     });
   }
 
