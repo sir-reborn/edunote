@@ -59,16 +59,28 @@ class ClassDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSummaryTab(Class classItem) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Summary:', style: TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 10),
-          Text(classItem.summary ?? 'No summary available'),
-        ],
+  Widget _buildTranscriptSection(Class classItem) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Transcript',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(classItem.transcript),
+            const SizedBox(height: 16),
+            const Text(
+              'Summary',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(classItem.summary),
+          ],
+        ),
       ),
     );
   }
