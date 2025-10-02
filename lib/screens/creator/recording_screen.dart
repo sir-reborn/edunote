@@ -219,24 +219,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
     });
   }
 
-  void _pausePlayback() async {
-    if (_isPaused) {
-      await _audioPlayer.play();
-    } else {
-      await _audioPlayer.pause();
-    }
-
-    setState(() {
-      _isPaused = !_isPaused;
-    });
-  }
-
-  void _stopPlayback() async {
-    await _audioPlayer.stop();
-    setState(() {
-      _isPlaying = false;
-      _isPaused = false;
-    });
+    // Start background transcription
+    _startBackgroundTranscription(_recordingPath!, newClass);
   }
 
   void _startTimer() {
