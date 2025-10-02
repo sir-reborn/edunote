@@ -308,16 +308,11 @@ class _RecordingScreenState extends State<RecordingScreen> {
           json.decode(response.body) as Map<String, dynamic>;
       //when we get the response, decode it into a map.
 
-      if (transcriptResult['status'] == 'completed') {
-        return transcriptResult;
-      } else if (transcriptResult['status'] == 'error') {
-        throw Exception('Transcription failed');
-      }
-      //the response map contains a key "status", we use it to know the state of the reuqets
-      // i.e "processing", "completed", "queued", "error". Return the entire Map if it is completed
-      //throw error if something go wrong
-      await Future.delayed(delay);
+      if (result['status'] == 'completed') return result;
+      if (result['status'] == 'error') throw Exception('Transcription failed');
     }
+    throw Exception('Transcription timed out');
+  }
 
     throw Exception('Transcription timed out after ${maxAttempts * 2} seconds');
   }
