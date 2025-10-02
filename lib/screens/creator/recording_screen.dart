@@ -163,15 +163,16 @@ class _RecordingScreenState extends State<RecordingScreen> {
   }
 
   void _pauseRecording() async {
-    if (_isPaused) {
-      await _audioRecorder.resume();
-      _startTimer();
-    } else {
-      await _audioRecorder.pause();
-      _timer
-          ?.cancel(); //stops the duration timer so it doesn't continue counting while paused. ensures that it only tries to cancel if _timer is not null.
-    }
+    await _audioRecorder.pause();
+    _timer?.cancel();
+    setState(() {
+      _isPaused = true;
+    });
+  }
 
+  void _resumeRecording() async {
+    await _audioRecorder.resume();
+    _startTimer();
     setState(() {
       _isPaused =
           !_isPaused; //update the UI so the app can reflect the new state (e.g., button label changes to "Resume" when paused).
