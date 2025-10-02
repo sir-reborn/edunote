@@ -216,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildClassCard(Class classItem) {
     return Card(
       elevation: 4,
-      margin: EdgeInsetsGeometry.fromLTRB(0, 0, 0, 20),
+      margin: const EdgeInsets.only(bottom: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
