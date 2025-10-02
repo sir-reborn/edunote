@@ -128,7 +128,11 @@ class _RecordingScreenState extends State<RecordingScreen> {
           onPressed: () => setState(() => _showStopConfirmation = false),
           child: const Text('Cancel'),
         ),
-      ),
+        TextButton(
+          onPressed: _stopRecording,
+          child: const Text('Stop', style: TextStyle(color: Colors.red)),
+        ),
+      ],
     );
   }
 
