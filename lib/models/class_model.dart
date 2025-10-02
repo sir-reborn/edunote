@@ -44,6 +44,8 @@ class Class {
       'recordingPath': recordingPath,
       'transcript': transcript,
       'summary': summary,
+      'duration': duration,
+      'language': language,
     };
   }
 
