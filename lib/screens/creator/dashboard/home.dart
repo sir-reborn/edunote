@@ -39,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _addNewClass() async {
-    final result = await Navigator.pushNamed(context, '/record');
+    // First navigate to class info screen
+    final result = await Navigator.pushNamed(context, '/class-info');
+  }
 
     if (result != null && result is Class) {
       setState(() {
