@@ -50,15 +50,9 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
   @override
   void dispose() {
-    //clean up resources when the sreen is removed
-    _timer
-        ?.cancel(); // 1. Stop the timer to avoid it running after screen is closed
-    _audioRecorder
-        .dispose(); // 2. Release mic recording resources (OS audio input stream)
-    _audioPlayer
-        .dispose(); // 3. Release playback resources (OS audio output stream)
-    _fileNameController.dispose(); // 4. Clean up text controller (typical)
-    super.dispose(); // 5. Let Flutter clean up the rest
+    _timer?.cancel();
+    _audioRecorder.dispose();
+    super.dispose();
   }
 
   @override
