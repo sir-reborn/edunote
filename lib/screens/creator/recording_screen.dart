@@ -148,7 +148,9 @@ class _RecordingScreenState extends State<RecordingScreen> {
     if (await _audioRecorder.hasPermission()) {
       //wait till there's permission
       final directory = await getApplicationDocumentsDirectory();
-      final filePath = p.join(directory.path, 'temp_recording.wav');
+      final fileName =
+          '${_subject}_${DateTime.now().millisecondsSinceEpoch}.wav';
+      final filePath = p.join(directory.path, fileName);
 
       await _audioRecorder.start(const RecordConfig(), path: filePath);
 
