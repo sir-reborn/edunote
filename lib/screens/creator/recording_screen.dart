@@ -293,7 +293,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     String transcriptId,
   ) async {
     const maxAttempts = 30;
-    const delay = Duration(seconds: 2);
+    const delay = Duration(seconds: 5);
 
     for (var i = 0; i < maxAttempts; i++) {
       await Future.delayed(delay);
