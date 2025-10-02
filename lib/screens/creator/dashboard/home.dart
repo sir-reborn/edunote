@@ -192,7 +192,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: const Text('Create class'),
               ),
               const SizedBox(width: 20),
-              ElevatedButton(onPressed: () {}, child: const Text('Join class')),
+              ElevatedButton(
+                onPressed: _joinClass,
+                child: const Text('Join class'),
+              ),
             ],
           ),
         ],
