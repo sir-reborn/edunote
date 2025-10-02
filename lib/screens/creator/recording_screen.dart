@@ -78,7 +78,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
             if (!_isRecording && !_isProcessing)
               const Text('Tap the mic to start recording'),
 
-                    const SizedBox(height: 10),
+            if (_showStopConfirmation) _buildStopConfirmation(),
 
             if (!_showStopConfirmation) ...[
               AvatarGlow(
