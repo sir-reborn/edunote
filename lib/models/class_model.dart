@@ -17,6 +17,8 @@ class Class {
     this.recordingPath,
     required this.transcript,
     required this.summary,
+    required this.duration,
+    this.language = 'English',
   });
 
   @override
