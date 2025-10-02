@@ -324,7 +324,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
         'No summary available';
   }
 
-    // Process speaker segments
+  String _extractTranscript(Map<String, dynamic> transcriptResult) {
     final utterances = transcriptResult['utterances'] as List<dynamic>?;
     if (utterances == null)
       return transcriptResult['text'] ?? 'No transcript available';
