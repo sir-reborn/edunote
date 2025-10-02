@@ -279,7 +279,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
         duration: initialClass.duration,
       );
 
-      return {'notes': _structuredNotes ?? '', 'summary': _summary ?? ''};
+      // 6. Notify home screen (you'll need to implement this)
+      _notifyClassCompleted(completedClass);
     } catch (e) {
       // Retry logic could be added here
       debugPrint('Transcription error: $e');
