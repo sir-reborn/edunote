@@ -23,20 +23,35 @@ class RecordingScreen extends StatefulWidget {
 }
 
 class _RecordingScreenState extends State<RecordingScreen> {
-  final AudioRecorder _audioRecorder = AudioRecorder(); // For recording
-  final AudioPlayer _audioPlayer = AudioPlayer(); // For playback
-  bool _isRecording = false; // True while recording
-  bool _isPaused = false; // True when paused (recording or playing)
-  bool _isPlaying = false; // True when playing audio
-  String? _recordingPath; // Stores the recorded file path
-  Timer? _timer; // Timer to count recording time
-  int _recordDuration = 0; // Number of seconds recorded
-  final TextEditingController _fileNameController =
-      TextEditingController(); // For file naming
-  String? _summary;
-  List<SpeakerSegment> _speakerSegments = [];
-  String _structuredNotes = '';
-  final TextEditingController _notesController = TextEditingController();
+  final AudioRecorder _audioRecorder = AudioRecorder();
+  bool _isRecording = false;
+  bool _isPaused = false;
+  String? _recordingPath;
+  Timer? _timer;
+  int _recordDuration = 0;
+  String? _subject;
+  String? _teacher;
+  bool _isProcessing = false;
+  bool _showStopConfirmation = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize non-widget-dependent things here
+    _audioRecorder.dispose(); // Dispose any existing recorder
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Move route-dependent code here
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, String>?;
+    if (args != null) {
+      _subject = args['subject'];
+      _teacher = args['teacher'];
+    }
+  }
 
   @override
   void dispose() {
