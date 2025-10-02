@@ -281,11 +281,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       return {'notes': _structuredNotes ?? '', 'summary': _summary ?? ''};
     } catch (e) {
-      Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
-      );
-      return {'notes': '', 'summary': ''};
+      // Retry logic could be added here
+      debugPrint('Transcription error: $e');
     }
   }
 
