@@ -272,4 +272,34 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  void _joinClass() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Join Class'),
+        content: const TextField(
+          decoration: InputDecoration(
+            labelText: 'Enter class code',
+            border: OutlineInputBorder(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Class joined successfully')),
+              );
+            },
+            child: const Text('Join'),
+          ),
+        ],
+      ),
+    );
+  }
 }
