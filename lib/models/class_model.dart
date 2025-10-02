@@ -36,7 +36,6 @@ class Class {
     return '$minutes:$seconds';
   }
 
-  // Convert Class → Map
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -51,7 +50,6 @@ class Class {
     };
   }
 
-  // Convert Map → Class
   factory Class.fromMap(Map<String, dynamic> map) {
     return Class(
       id: map['id'] ?? DateTime.now().millisecondsSinceEpoch.toString(),
