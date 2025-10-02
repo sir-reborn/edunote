@@ -301,11 +301,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
         Uri.parse('https://api.assemblyai.com/v2/transcript/$transcriptId'),
         headers: {'authorization': 'e0002e9595d94613b8fb70857b1c0738'},
       );
-      //earlier we got ID from our post request, that is the ticket we will be using to ask the server for our response
-
-      final transcriptResult =
-          json.decode(response.body) as Map<String, dynamic>;
-      //when we get the response, decode it into a map.
+      final result = json.decode(response.body) as Map<String, dynamic>;
 
       if (result['status'] == 'completed') return result;
       if (result['status'] == 'error') throw Exception('Transcription failed');
