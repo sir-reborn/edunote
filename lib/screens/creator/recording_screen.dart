@@ -174,8 +174,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     await _audioRecorder.resume();
     _startTimer();
     setState(() {
-      _isPaused =
-          !_isPaused; //update the UI so the app can reflect the new state (e.g., button label changes to "Resume" when paused).
+      _isPaused = false;
     });
   }
 
