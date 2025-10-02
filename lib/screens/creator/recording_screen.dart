@@ -232,22 +232,10 @@ class _RecordingScreenState extends State<RecordingScreen> {
     });
   }
 
-  Future<Map<String, String>> _transcribeAudio(String filePath) async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 20),
-            Text('Processing audio...'),
-          ],
-        ),
-      ),
-    );
-
+  Future<void> _startBackgroundTranscription(
+    String filePath,
+    Class initialClass,
+  ) async {
     try {
       // Upload
       final uploadResponse = await http.post(
