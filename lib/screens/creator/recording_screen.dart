@@ -153,7 +153,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
       await _audioRecorder.start(const RecordConfig(), path: filePath);
 
       setState(() {
-        _isRecording = true; //set recording state to true
+        _isRecording = true;
         _recordDuration = 0;
         _recordingPath = filePath;
       });
