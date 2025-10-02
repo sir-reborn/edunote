@@ -61,14 +61,9 @@ class _RecordingScreenState extends State<RecordingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Record Lecture',
-          style: GoogleFonts.poppins(
-            fontSize: 30,
-            color: Colour.kwhite,
-            fontWeight: FontWeight.w500,
-          ),
+          'Recording: $_subject',
+          style: TextStyle(color: Colors.white),
         ),
-        elevation: 0,
         backgroundColor: Colour.purple,
       ),
       body: SingleChildScrollView(
