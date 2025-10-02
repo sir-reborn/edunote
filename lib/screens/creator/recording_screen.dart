@@ -258,7 +258,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       final audioUrl = json.decode(uploadResponse.body)['upload_url'];
 
-      // Request transcription
+      // 2. Start transcription
       final transcriptResponse = await http.post(
         Uri.parse('https://api.assemblyai.com/v2/transcript'),
         headers: {
