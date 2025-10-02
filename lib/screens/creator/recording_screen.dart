@@ -179,6 +179,10 @@ class _RecordingScreenState extends State<RecordingScreen> {
     });
   }
 
+  void _requestStopRecording() {
+    setState(() => _showStopConfirmation = true);
+  }
+
   void _stopRecording() async {
     _timer?.cancel();
     await _audioRecorder.stop();
