@@ -260,6 +260,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       final transcriptId = json.decode(transcriptResponse.body)['id'];
 
+      // 3. Poll for results in background
       final transcriptResult = await _pollForTranscriptionResult(transcriptId);
 
       // 4. Process results
