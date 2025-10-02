@@ -298,9 +298,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     for (var i = 0; i < maxAttempts; i++) {
       await Future.delayed(delay);
       final response = await http.get(
-        Uri.parse(
-          'https://api.assemblyai.com/v2/transcript/$transcriptId',
-        ), //returns the current status of the transcription job
+        Uri.parse('https://api.assemblyai.com/v2/transcript/$transcriptId'),
         headers: {'authorization': 'e0002e9595d94613b8fb70857b1c0738'},
       );
       //earlier we got ID from our post request, that is the ticket we will be using to ask the server for our response
