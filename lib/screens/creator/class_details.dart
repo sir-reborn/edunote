@@ -32,19 +32,29 @@ class ClassDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTranscriptTab(Class classItem) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Transcript:',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          Text(classItem.transcript ?? 'No transcript available'),
-        ],
+  Widget _buildClassInfoSection(Class classItem) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Teacher: ${classItem.teacher}'),
+            const SizedBox(height: 8),
+            Text('Date: ${classItem.formattedDate}'),
+            const SizedBox(height: 8),
+            Text('Duration: ${classItem.formattedDuration}'),
+            const SizedBox(height: 8),
+            Text('Language: ${classItem.language}'),
+            const SizedBox(height: 16),
+            if (classItem.recordingPath != null)
+              ElevatedButton(
+                onPressed: () {},
+                //_playRecording(classItem.recordingPath!)
+                child: const Text('Play Recording'),
+              ),
+          ],
+        ),
       ),
     );
   }
