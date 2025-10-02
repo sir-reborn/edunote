@@ -200,23 +200,17 @@ class _RecordingScreenState extends State<RecordingScreen> {
       ),
     );
 
-    if (fileName != null && fileName.isNotEmpty) {
-      final directory = await getApplicationDocumentsDirectory();
-      final newPath = p.join(directory.path, '$fileName.wav');
-      await File(_recordingPath!).rename(newPath);
-
-      // Wait for transcription
-      final processedData = await _transcribeAudio(newPath);
-
-      final newClass = Class(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        subject: fileName,
-        teacher: 'Prof. Smith',
-        date: DateTime.now(),
-        recordingPath: newPath,
-        transcript: processedData['notes'] ?? 'No transcript',
-        summary: processedData['summary'] ?? 'No summary available',
-      );
+    // Create initial class with empty transcript
+    final newClass = Class(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      subject: _subject!,
+      teacher: _teacher!,
+      date: DateTime.now(),
+      recordingPath: _recordingPath!,
+      transcript: 'Transcription in progress...',
+      summary: 'Summary will be available soon',
+      duration: _recordDuration,
+    );
 
       Navigator.pop(context, newClass); // Send completed class to home
     }
