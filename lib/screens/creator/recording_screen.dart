@@ -315,11 +315,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     throw Exception('Transcription timed out');
   }
 
-    throw Exception('Transcription timed out after ${maxAttempts * 2} seconds');
-  }
-
-  void _processEnhancedTranscript(Map<String, dynamic> transcriptResult) {
-    // Extract summary from chapters
+  String _extractSummary(Map<String, dynamic> transcriptResult) {
     final chapters = transcriptResult['chapters'] as List<dynamic>?;
     return chapters?.map((c) => c['summary'] as String).join('\n\n') ??
         'No summary available';
