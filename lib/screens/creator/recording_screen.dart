@@ -133,14 +133,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
   }
 
   String _formatDuration(int seconds) {
-    final minutes = (seconds ~/ 60).toString().padLeft(
-      2,
-      '0',
-    ); //return quoteint
-    final remainingSeconds = (seconds % 60).toString().padLeft(
-      2,
-      '0',
-    ); // return remainder
+    final minutes = (seconds ~/ 60).toString().padLeft(2, '0');
+    final remainingSeconds = (seconds % 60).toString().padLeft(2, '0');
     return '$minutes:$remainingSeconds';
   }
 
