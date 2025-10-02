@@ -193,27 +193,10 @@ class _RecordingScreenState extends State<RecordingScreen> {
     _timer?.cancel();
     await _audioRecorder.stop();
 
-    final fileName = await showDialog<String>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Save Recording'),
-        content: TextField(
-          controller: _fileNameController,
-          decoration: const InputDecoration(
-            labelText: 'File Name',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, _fileNameController.text),
-            child: const Text('Save'),
-          ),
-        ],
+    // Notify user that transcription is starting
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Recording saved. Transcription in progress...'),
       ),
     );
 
