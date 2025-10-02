@@ -296,6 +296,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     const delay = Duration(seconds: 2);
 
     for (var i = 0; i < maxAttempts; i++) {
+      await Future.delayed(delay);
       final response = await http.get(
         Uri.parse(
           'https://api.assemblyai.com/v2/transcript/$transcriptId',
