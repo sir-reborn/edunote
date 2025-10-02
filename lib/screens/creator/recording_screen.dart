@@ -320,12 +320,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
     if (utterances == null)
       return transcriptResult['text'] ?? 'No transcript available';
 
-    if (_speakerSegments.isNotEmpty) {
-      buffer.write('## Speaker Contributions\n');
-      for (final segment in _speakerSegments) {
-        buffer.write('- **${segment.speaker}**: ${segment.text}\n');
-      }
-    }
+    return utterances.map((u) => '${u['speaker']}: ${u['text']}').join('\n\n');
+  }
 
   void _notifyClassCompleted(Class completedClass) {
     // You'll need to implement this using your state management solution
