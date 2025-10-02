@@ -80,75 +80,53 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
                     const SizedBox(height: 10),
 
-                    // Microphone icon with pulse animation when recording
-                    // Microphone with glow effect when recording
-                    AvatarGlow(
-                      animate: _isRecording,
-                      glowColor: Colors.white,
-                      endRadius: 120,
-                      duration: const Duration(milliseconds: 2000),
-                      repeatPauseDuration: const Duration(milliseconds: 100),
-                      repeat: true,
-                      showTwoGlows: true,
-                      child: CircleAvatar(
-                        backgroundColor: _isRecording
-                            ? Colour.purple1
-                            : Colour.kwhite,
-                        radius: 60,
-                        child: CircleAvatar(
-                          backgroundColor: _isRecording
-                              ? Colour.kwhite
-                              : Colour.purple1,
-                          radius: 55,
-                          child: IconButton(
-                            onPressed: _isRecording ? null : _startRecording,
-                            icon: Icon(
-                              Icons.mic_none_rounded,
-                              size: 100,
-                              color: _isRecording
-                                  ? Colour.purple1
-                                  : Colour.kwhite,
-                            ),
-                          ),
-                        ),
-                      ),
-                      //),
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Control buttons
-                    // Control buttons (only show when recording or playing)
-                    if (_isRecording || _isPlaying)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FloatingActionButton(
-                            heroTag: 'pause-fab',
-                            onPressed: _isRecording
-                                ? _pauseRecording
-                                : _pausePlayback,
-                            backgroundColor: Colour.purple3,
-                            child: Icon(
-                              _isPaused ? Icons.play_arrow : Icons.pause,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          FloatingActionButton(
-                            heroTag: 'stop-fab',
-                            onPressed: _isRecording
-                                ? _stopRecording
-                                : _stopPlayback,
-                            backgroundColor: Colour.purple3,
-                            child: const Icon(Icons.stop, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                  ],
+            if (!_showStopConfirmation) ...[
+              AvatarGlow(
+                animate: _isRecording,
+                glowColor: Colors.red,
+                endRadius: 100,
+                child: IconButton(
+                  iconSize: 60,
+                  icon: Icon(_isRecording ? Icons.mic : Icons.mic_none),
+                  color: _isRecording ? Colors.red : Colors.grey,
+                  onPressed: _isRecording ? null : _startRecording,
                 ),
               ),
-            ),
-          ),
+              const SizedBox(height: 20),
+              if (_isRecording && !_isPaused)
+                ElevatedButton(
+                  onPressed: _pauseRecording,
+                  child: const Text('Pause'),
+                ),
+              if (_isRecording && _isPaused)
+                ElevatedButton(
+                  onPressed: _resumeRecording,
+                  child: const Text('Resume'),
+                ),
+              if (_isRecording)
+                ElevatedButton(
+                  onPressed: _requestStopRecording,
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: const Text(
+                    'Stop',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStopConfirmation() {
+    return AlertDialog(
+      title: const Text('Confirm Stop'),
+      content: const Text('Are you sure you want to stop recording?'),
+      actions: [
+        TextButton(
+          onPressed: () => setState(() => _showStopConfirmation = false),
+          child: const Text('Cancel'),
         ),
       ),
     );
