@@ -358,8 +358,13 @@ class _RecordingScreenState extends State<RecordingScreen> {
       }
     }
 
-    _structuredNotes = buffer.toString();
-    _notesController.text = _structuredNotes;
+  void _notifyClassCompleted(Class completedClass) {
+    // You'll need to implement this using your state management solution
+    // This could be:
+    // - A global event bus
+    // - A state management solution like Provider, Riverpod, etc.
+    // - A callback passed from the home screen
+    debugPrint('Class completed: ${completedClass.subject}');
   }
 
   Future<void> _createStructuredPdf() async {
