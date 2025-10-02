@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final storage = GetStorage();
+  bool _isFabOpen = false;
   List<Class> classes = [];
   bool isLoading = false;
 
