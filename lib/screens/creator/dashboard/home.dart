@@ -61,6 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _createClass() async {
+    // Navigate to recording screen with callback
+    final result = await Navigator.pushNamed(
+      context,
+      '/record',
+      arguments: {
+        'subject':
+            'New Lecture', // Default values if not from class-info screen
+        'teacher': 'Professor',
+      },
+    );
+
+    _handleRecordingResult(result);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
