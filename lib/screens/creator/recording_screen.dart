@@ -234,7 +234,7 @@ class _RecordingScreenState extends State<RecordingScreen> {
     Class initialClass,
   ) async {
     try {
-      // Upload
+      // 1. Upload audio
       final uploadResponse = await http.post(
         Uri.parse('https://api.assemblyai.com/v2/upload'),
         headers: {'authorization': 'e0002e9595d94613b8fb70857b1c0738'},
