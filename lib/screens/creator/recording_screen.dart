@@ -262,7 +262,9 @@ class _RecordingScreenState extends State<RecordingScreen> {
 
       final transcriptResult = await _pollForTranscriptionResult(transcriptId);
 
-      _processEnhancedTranscript(transcriptResult);
+      // 4. Process results
+      final summary = _extractSummary(transcriptResult);
+      final transcript = _extractTranscript(transcriptResult);
 
       // 5. Create completed class
       final completedClass = Class(
