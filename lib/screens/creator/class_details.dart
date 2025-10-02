@@ -16,8 +16,9 @@ class ClassDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildTranscriptTab(classItem),
-            _buildSummaryTab(classItem),
+            _buildClassInfoSection(classItem),
+            const SizedBox(height: 20),
+            _buildTranscriptSection(classItem),
           ],
         ),
         floatingActionButton: FloatingActionButton(
