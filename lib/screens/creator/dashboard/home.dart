@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Added new class: ${result.subject}')),
+        SnackBar(content: Text('Recording saved for ${initialClass.subject}')),
       );
     }
   }
