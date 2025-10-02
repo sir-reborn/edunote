@@ -1,4 +1,5 @@
 import 'package:edunote/screens/creator/class_details.dart';
+import 'package:edunote/screens/creator/dashboard/class_info_screen.dart';
 import 'package:edunote/screens/creator/file_screen.dart';
 import 'package:edunote/screens/creator/profile.dart';
 import 'package:edunote/screens/creator/recording_screen.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             '/class-details': (context) => const ClassDetailsScreen(),
             '/profile': (context) => const ProfileScreen(),
             '/downloads': (context) => const FilesScreen(),
+            '/class-info': (context) => const ClassInfoScreen(),
           },
           useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
