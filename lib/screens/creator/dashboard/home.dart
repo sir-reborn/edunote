@@ -266,6 +266,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Last updated: ${classItem.formattedDate}',
                 style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
+              if (classItem.transcript == 'Transcription in progress...')
+                const LinearProgressIndicator(),
             ],
           ),
         ),
