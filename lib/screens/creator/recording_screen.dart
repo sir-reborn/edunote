@@ -66,48 +66,17 @@ class _RecordingScreenState extends State<RecordingScreen> {
         ),
         backgroundColor: Colour.purple,
       ),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colour.purpleLight1,
-                  Colour.purpleLight1,
-                  Colour.purpleDark1,
-                ],
-                begin: const FractionalOffset(0.0, 0.4),
-                end: Alignment.topRight,
-              ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              _formatDuration(_recordDuration),
+              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(height: size.height * (1 / 4)),
-                    // Timer display
-                    Text(
-                      _formatDuration(_recordDuration),
-                      style: const TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Colour.kwhite,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    // Instruction text (only shows when not recording)
-                    if (!_isRecording && !_isPlaying)
-                      Text(
-                        'Tap to record',
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colour.kwhite,
-                        ),
-                      ),
+            const SizedBox(height: 20),
+            if (!_isRecording && !_isProcessing)
+              const Text('Tap the mic to start recording'),
 
                     const SizedBox(height: 10),
 
